@@ -8,7 +8,7 @@ such as title, artist, album, and more.
 
 You can use these tags to organize and search for your media files more effectively.
 
-Bu the **best use** of the tags is to create smart playlists in Apple Music that bundle
+But the **best use** of the tags is to create smart playlists in Apple Music that bundle
 the audio/video files into playlists based on the tags.
 
 ## 2. What?
@@ -36,6 +36,8 @@ Other fields that could still be useful or populated are: `discsubtitle`, `date`
 Use the following script to list all the "friendly aliases" available:
 
     list_possible_mp3_tags.py
+
+You can reference the list of standard MP3 tags at [id3.org/id3v2.4.0-frames](https://id3.org/id3v2.4.0-frames]).
 
 ### 3.1 The Phrase Vault
 
