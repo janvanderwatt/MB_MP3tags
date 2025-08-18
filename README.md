@@ -21,17 +21,17 @@ This project maps the audio files of the Mandarin Blueprint course to tags as fo
 
 ### Tag Summary
 
-| Tag Name | Phrase Vault | MSLK | MB Stories | MB Combined Sentences | 
-|----------|-------|-------|-------|-------|
-| `title` | *Subject (without the \_ of the filename)* | MSLK Lesson *lesson number* | *Chinese story title* + *classifier* + *Chinese speaker gender & speed* + (*English speed*) <br> e.g. "耐心 Paragraph #5 - 男慢话 (Slower)"| L\<level\> All Sentences Combined |
-| `album` | *LLR, TAP or IMMERSION* | *LLR, TAP or IMMERSION* | mbP\<phase\>L\<level\>, eg. "mbP5L32" | mbP\<phase\>L\<level\> |
-| `discsubtitle` | Part *part number* | Part *lesson number* | \<empty\> | \<empty\> |
-| `discnumber` | *part number* | *lesson number* | \<empty\> | \<empty\> |
-| `comment` | The Phrase Vault | Mandarin Speaking & Listening Kickstarter |  The Mandarin Blueprint Method | The Mandarin Blueprint Method |
-| `artist` | Mandarin Blueprint | Mandarin Blueprint | Mandarin Blueprint | Mandarin Blueprint |
-| `genre` | Language Learning | Language Learning | Language Learning | Language Learning |
+| Tag Name | Phrase Vault | MSLK | MB Stories | MB Combined Sentences | Language Islands |
+|----------|-------|-------|-------|-------|-------|
+| `title` | *Subject (without the \_ of the filename)* | MSLK Lesson *lesson number* | *Chinese story title* + *classifier* + *Chinese speaker gender & speed* + (*English speed*) <br> e.g. "耐心 Paragraph #5 - 男慢话 (Slower)"| L\<level\> All Sentences Combined | *Subject (without the \_ of the filename)* |
+| `album` | *LLR, TAP or IMMERSION* | *LLR, TAP or IMMERSION* | mbP\<phase\>L\<level\>, eg. "mbP5L32" | mbP\<phase\>L\<level\> | IMMERSION |
+| `discsubtitle` | Part *part number* | Part *lesson number* | \<empty\> | \<empty\> | *Person name* |
+| `discnumber` | *part number* | *lesson number* | \<empty\> | \<empty\> | \<empty\> |
+| `comment` | The Phrase Vault | Mandarin Speaking & Listening Kickstarter |  The Mandarin Blueprint Method | The Mandarin Blueprint Method | Language Islands | 
+| `artist` | Mandarin Blueprint | Mandarin Blueprint | Mandarin Blueprint | Mandarin Blueprint | Mandarin Blueprint |
+| `genre` | Language Learning | Language Learning | Language Learning | Language Learning | Language Learning |
 
-Other fields that could still be useful or populated are: `discsubtitle`, `date`, `albumartist`.
+Other fields that could still be useful or populated are: `date`, `albumartist`.
 
 Use the following script to list all the "friendly aliases" available:
 
