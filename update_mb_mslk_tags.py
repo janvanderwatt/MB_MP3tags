@@ -5,6 +5,10 @@ from mutagen.easyid3 import EasyID3
 from mutagen.id3 import ID3, COMM
 import argparse
 
+ARTIST_NAME = "Mandarin Blueprint"
+GENRE = "Language Learning"
+COMMENT_TEXT = "Mandarin Speaking & Listening Kickstarter"
+
 # Ensure files can be tagged if no ID3 tag exists
 def ensure_id3(filename):
     try:
@@ -38,9 +42,9 @@ def set_audio_tags(file, full_path):
         'discsubtitle': f"Part {part_num}",
         'discnumber': part_num,
         'album': album_code,
-        'artist': "Mandarin Blueprint",
-        'genre': "Language Learning"
-    }            
+        'artist': ARTIST_NAME,
+        'genre': GENRE
+    }
 
     audio = EasyID3(full_path)
     modified = False
@@ -59,13 +63,13 @@ def set_audio_tags(file, full_path):
     current_comm = full_tags.getall("COMM")
     comment_needed = True
     for comm in current_comm:
-        if comm.lang == 'eng' and comm.desc == '' and comm.text == ['Mandarin Speaking & Listening Kickstarter']:
+        if comm.lang == 'eng' and comm.desc == '' and comm.text == [COMMENT_TEXT]:
             comment_needed = False
             break
 
     if comment_needed:
         full_tags.delall("COMM")
-        full_tags.add(COMM(encoding=3, lang='eng', desc='', text='Mandarin Speaking & Listening Kickstarter'))
+        full_tags.add(COMM(encoding=3, lang='eng', desc='', text=COMMENT_TEXT))
         full_tags.save()
 
     if modified:

@@ -15,6 +15,10 @@ from mutagen.id3 import ID3, COMM
 from mutagen.mp4 import MP4
 import argparse
 
+ARTIST_NAME = "Mandarin Blueprint"
+GENRE = "Language Learning"
+COMMENT_TEXT = "The Mandarin Blueprint Method"
+
 current_dir = ""
 mbPL = None  # Global variable to store the current mbP and L
 file_status = {}
@@ -72,9 +76,9 @@ def set_audio_tags(file, full_path, title):
     expected_tags = {
         'title': title,
         'album': mbPL,
-        'artist': "Mandarin Blueprint",
-        'genre': "Language Learning"
-    }            
+        'artist': ARTIST_NAME,
+        'genre': GENRE
+    }
 
     audio = EasyID3(full_path)
     modified = False
@@ -93,13 +97,13 @@ def set_audio_tags(file, full_path, title):
     current_comm = full_tags.getall("COMM")
     comment_needed = True
     for comm in current_comm:
-        if comm.lang == 'eng' and comm.desc == '' and comm.text == ['The Mandarin Blueprint Method']:
+        if comm.lang == 'eng' and comm.desc == '' and comm.text == [COMMENT_TEXT]:
             comment_needed = False
             break
 
     if comment_needed:
         full_tags.delall("COMM")
-        full_tags.add(COMM(encoding=3, lang='eng', desc='', text='The Mandarin Blueprint Method'))
+        full_tags.add(COMM(encoding=3, lang='eng', desc='', text=COMMENT_TEXT))
         full_tags.save()
 
     if modified:
@@ -114,9 +118,9 @@ def set_video_tags(file, full_path, title):
     expected_tags = {
         '\xa9nam': title,  # Title
         '\xa9alb': mbPL,  # Album
-        '\xa9ART': "Mandarin Blueprint",  # Artist
-        '\xa9gen': "Language Learning",  # Genre
-        '\xa9cmt': "The Mandarin Blueprint Method"  # Comment
+        '\xa9ART': ARTIST_NAME,  # Artist
+        '\xa9gen': GENRE,  # Genre
+        '\xa9cmt': COMMENT_TEXT  # Comment
     }
 
     modified = False
