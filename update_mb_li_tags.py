@@ -45,10 +45,11 @@ def set_audio_tags(file, full_path):
     # print(f" - Disc Number: {part_num}")
 
     expected_tags = {
-        'title': clean_title(raw_title.split('_')),
+        'title': clean_title(raw_title.split('_')) + f" - part {part_num}",
         'discsubtitle': person,
-        'discnumber': part_num,
-        'album': "IMMERSION",
+        'discnumber': "",
+        'tracknumber': part_num,
+        'album': "LI IMMERSION",
         'artist': ARTIST_NAME,
         'genre': GENRE
     }
@@ -73,11 +74,12 @@ def set_audio_tags(file, full_path):
         if comm.lang == 'eng' and comm.desc == '' and comm.text == [COMMENT_TEXT]:
             comment_needed = False
             break
-
+        
     if comment_needed:
         full_tags.delall("COMM")
         full_tags.add(COMM(encoding=3, lang='eng', desc='', text=COMMENT_TEXT))
-        full_tags.save()
+        full_tags.save(v2_version=3)
+        modified = True
 
     if modified:
         print(f"--> UPDATED [{file}]")
@@ -87,7 +89,10 @@ def set_audio_tags(file, full_path):
 
 def find_files_with_extension(path, extension):
     """Find all files with the given extension in the current directory and subdirectories."""
+    print(f"<-| {path} | ->")  # current directory path
+
     for root, dirs, files in os.walk(path):
+        print(f"-| {root} | -")  # current directory path
         if ".git" in root:
             continue
         
@@ -96,6 +101,8 @@ def find_files_with_extension(path, extension):
             if file.lower().endswith(extension):
                 full_path = os.path.join(root, file)
                 set_audio_tags(file, full_path)
+
+    print("Done.")
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()

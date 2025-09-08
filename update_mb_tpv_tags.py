@@ -59,7 +59,7 @@ def set_audio_tags(file, full_path):
             modified = True
 
     if modified:
-        audio.save()
+        audio.save(v2_version=3)
 
     # Add comment using full ID3
     full_tags = ID3(full_path)
@@ -73,7 +73,7 @@ def set_audio_tags(file, full_path):
     if comment_needed:
         full_tags.delall("COMM")
         full_tags.add(COMM(encoding=3, lang='eng', desc='', text=COMMENT_TEXT))
-        full_tags.save()
+        full_tags.save(v2_version=3)
 
     if modified:
         print(f"--> UPDATED [{file}]")
