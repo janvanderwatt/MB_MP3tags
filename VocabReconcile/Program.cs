@@ -202,7 +202,7 @@ static string ToDestinationEnglish(string value)
 {
     return Regex.Replace(
         value.Trim(),
-        @"\s+\((adj|v|n|av|adv|prep|conj|pron|mw|num|part|aux|int|interj)\)(?=\s|$)",
+        @"\s+\(([A-Za-z]{1,4}|\+)\)(?=\s|$)",
         ":$1",
         RegexOptions.IgnoreCase);
 }
